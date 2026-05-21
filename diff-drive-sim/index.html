@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Differential Drive Simulator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Differential drive robot</p>
+          <h1>Wheel speed simulator</h1>
+        </div>
+        <p class="hero-copy">
+          Adjust the left and right wheel speeds, then watch the robot move by the discrete-time motion model.
+        </p>
+      </header>
+
+      <main class="layout">
+        <section class="stage-card">
+          <div class="stage-header">
+            <div>
+              <h2>Trajectory</h2>
+              <p>Canvas view with pose history and heading marker.</p>
+            </div>
+            <div class="status-pills">
+              <span id="modeReadout" class="pill pill-live">Running</span>
+              <span id="poseReadout" class="pill pill-muted">x: 0.00, y: 0.00, θ: 0.00</span>
+            </div>
+          </div>
+
+          <div class="canvas-frame">
+            <canvas id="scene" aria-label="Differential drive robot simulator canvas"></canvas>
+          </div>
+        </section>
+
+        <aside class="controls-card">
+          <div class="panel-block">
+            <h2>Wheel speeds</h2>
+
+            <label class="slider-row" for="omegaRight">
+              <span>
+                <strong>ωR</strong>
+                <small id="omegaRightValue">1.50 rad/s</small>
+              </span>
+              <input id="omegaRight" type="range" min="-5" max="5" step="0.05" value="1.5" />
+            </label>
+
+            <label class="slider-row" for="omegaLeft">
+              <span>
+                <strong>ωL</strong>
+                <small id="omegaLeftValue">1.00 rad/s</small>
+              </span>
+              <input id="omegaLeft" type="range" min="-5" max="5" step="0.05" value="1.0" />
+            </label>
+          </div>
+
+          <div class="panel-block button-row">
+            <button id="toggleMotion" type="button">Pause</button>
+            <button id="resetSimulation" type="button" class="secondary">Reset</button>
+          </div>
+
+          <div class="panel-block notes">
+            <h3>Motion model</h3>
+            <p>
+              The simulator uses a fixed step <span>dt = 0.05 s</span> and the standard differential-drive kinematics.
+            </p>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
